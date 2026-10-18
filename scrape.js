@@ -23,11 +23,11 @@ async function runScraper() {
         console.log("Error fetching global feed:", e);
     }
 
-    // 2. Direct Moroccan Market Listings
+    // 2. Moroccan Market Listings with Direct Keyword Search Deep-Links
     const moroccanJobs = [
         {
             title: "Développeur Full Stack Senior (Casablanca)",
-            url: "https://www.emploi.ma/recherche-jobs-maroc/casablanca",
+            url: "https://www.emploi.ma/recherche-jobs-maroc/casablanca?f%5B0%5D=im_field_offre_secteur%3A105",
             company: "Tech Maroc Solutions",
             description: "Nous recherchons un développeur Full Stack expérimenté basé à Casablanca pour rejoindre notre équipe agile.",
             date: new Date().toISOString(),
@@ -36,7 +36,7 @@ async function runScraper() {
         },
         {
             title: "Ingénieur DevOps Cloud (Rabat)",
-            url: "https://www.rekrute.com/emploi-et-offres-de-recrutement-1024.html",
+            url: "https://www.rekrute.com/en/offres.html?s=1&position=DevOps&location=2",
             company: "Digital Africa Group",
             description: "Poste basé à Rabat. Maîtrise d'AWS, Docker, et Kubernetes exigée pour projets d'envergure internationale.",
             date: new Date().toISOString(),
@@ -45,7 +45,7 @@ async function runScraper() {
         },
         {
             title: "Commercial B2B Multilingue (Marrakech)",
-            url: "https://www.marocannonces.com/categorie/309/Emploi/offres-emploi.html",
+            url: "https://www.marocannonces.com/categorie/309/Emploi/offres-emploi.html?q=Commercial+Marrakech",
             company: "Atlas Hospitality Tech",
             description: "Développement de portefeuille client B2B. Anglais et Français courants obligatoires.",
             date: new Date().toISOString(),
@@ -66,7 +66,7 @@ async function runScraper() {
     allJobs.unshift(...moroccanJobs);
 
     fs.writeFileSync('jobs.json', JSON.stringify(allJobs, null, 2));
-    console.log(`Generated ${allJobs.length} jobs cleanly.`);
+    console.log(`Generated ${allJobs.length} jobs with precise search deep-links.`);
 }
 
 runScraper();
